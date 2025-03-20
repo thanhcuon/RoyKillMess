@@ -20,7 +20,7 @@ public class KillsDeathListener implements Listener {
     @EventHandler
     public void onDeath(@NotNull PlayerDeathEvent event) {
         final Player player = event.getEntity();
-        Entity killer = player.getKiller(); // Chỉ lấy người chơi giết
+        Entity killer = player.getKiller(); 
         String msg;
         if (killer instanceof Player) {
             Player killerPlayer = (Player) killer;
@@ -43,7 +43,6 @@ public class KillsDeathListener implements Listener {
                         .replace("%victim%", player.getName());
 
             } else {
-                // Nếu chết do nguyên nhân khác (ngã, lửa, TNT, ...)
                 String cause = player.getLastDamageCause() != null ? player.getLastDamageCause().getCause().toString() : "UNKNOWN";
                 if (CONFIG.isString("death-messages." + cause)) {
                     msg = CONFIG.getString("death-messages." + cause);
